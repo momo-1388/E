@@ -19,9 +19,9 @@ if ttt[2] == 0 :
     print (mo (t,tt))
 else:
     if ttt[2] > 0:
-
+        z =0
     else:
-        
+        a=0
 
 
 
