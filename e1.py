@@ -1,3 +1,4 @@
+
 def tt1 (x,xx,xxx):
     xx.clear()
     xxx.clear()
@@ -29,11 +30,41 @@ def mo1 (x,xx):
     else:  
         return ("t.n = %in + %i" %(d,b) )
 
+
 def mo2 (x,xx,xxx) :
+    out = str()
     a = xxx[0]/2
     d = xx[0] - a
     b = x[0] - xx[0]
-    return [a,d,b]
+    if a % 1 != 0:
+        if a == 0.5:
+            d -= 0.5
+            out += ("((n.(n + 1)) /2) ")
+        else:
+            d -= 0.5
+            out += ("%sn^2 + ((n.(n + 1)) /2) " %str(a//1))
+    else:
+        out += ("%sn^2 " %str(int(a)))
+    
+    if round(d,0) == d:
+        d = int(d)
+
+
+    if round(b,0) == b:
+        b = int(b)
+
+    
+    if d > 0 :
+        out += ("+%sn " %str(d))
+    elif d < 0 :
+        out += ("-%sn " %str(abs(d)))
+    
+    if b > 0 :
+        out += ("+%s" %str(b))
+    elif b < 0 :
+        out += ("-%s" %str(abs(b)))
+    
+    return out
     
 
 
@@ -55,7 +86,7 @@ else:
     if ttt[2] < 0:
         z =0
     else:
-        www = mo2 (t,tt,ttt)
+        print (mo2 (t,tt,ttt))
 
 
 
@@ -79,7 +110,7 @@ else:
 
 
 
-q =1
+#q =1
 
 
 
