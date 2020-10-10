@@ -174,9 +174,20 @@ def mo2 (x,xx,xxx) :      # در این فانکشن جمله عمومی جمل�
 
 
 def mo3(x,xx) :
+    asd = str()
     a = x[1] / xx[0] ** 2
-
-    return ("%i(%i^n)" %(a,xx[0]))
+    wwe = taj (a)
+    
+    if a == xx[0] ** len(wwe):
+        zxzx = len(wwe)
+        asd = ("%i^(n+%i)" %(xx[0],zxzx))
+    else:
+        if a == 1 :
+            asd = ("(%i^n)" %(xx[0]))
+        else:    
+            asd = ("%i(%i^n)" %(a,xx[0]))
+     
+    return  asd
 
 
 
