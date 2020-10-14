@@ -170,14 +170,14 @@ def mo2 (x,xx,xxx) :      # در این فانکشن جمله عمومی جمل�
             out += ("-%s" %str(abs(b)))
 
     return out
-    
+
 
 
 def mo3(x,xx) :
     asd = str('t.n = ')
     a = x[1] / xx[0] ** 2
     wwe = taj (a)
-    
+    if 
     if a == xx[0] ** len(wwe):
         zxzx = len(wwe)
         asd += ("%i^(n+%i)" %(xx[0],zxzx))
