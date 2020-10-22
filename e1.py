@@ -177,7 +177,7 @@ def mo3(x,xx) :
     asd = str('t.n = ')
     a = x[1] / xx[0] ** 2
     wwe = taj (a)
-    if 
+ 
     if a == xx[0] ** len(wwe):
         zxzx = len(wwe)
         asd += ("%i^(n+%i)" %(xx[0],zxzx))
