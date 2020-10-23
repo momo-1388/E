@@ -3,6 +3,33 @@
 
 n = lambda x: print ('\n'*x)
 
+iton = lambda x : dic[int(x)] [4]
+itos = lambda x : dic[int(x)] [1]
+stoi = lambda x : dicq[str(x)]
+ston = lambda x : dic[dicq[str(x)]][4]
+
+
+
+
+
+
+
+
+
+
+
+def b_list(x,y):
+    for q in x:
+        y.append(q)
+
+
+
+
+
+
+
+
+
 
 
 
@@ -155,7 +182,9 @@ def q_name(m):
 
     print ('name exam:')
     if m == 'f':
-        x = randlist(dici)
+        qwer = list()
+        b_list(dici,qwer)
+        x = randlist(qwer)
         for q in x:
             b = 0
             n(1)
@@ -176,7 +205,7 @@ def q_name(m):
                 n(2)
                 b = 1
             
-            print ('|   insert '+'It'+"'"+'s sambol.')
+            print ('|   insert '+'It'+"'"+'s symbol.')
             j = input ('       ?^>> ')
             
             if j == 'exit' or j == 'back':
@@ -206,44 +235,71 @@ def q_name(m):
             else :
                 print (ook)
 
+        if t == []:
+            print(oook)
 
 
-
+        tt = list()
 
         while t != [] :
 
             for q1 in range(0,len(t)):
                 q = t[q1]
                 b = 0
+                n(1)
 
-                print ('|   ' + dic[int(q)][4] + ':')
+                print ('|   ' + dic[int(q)][int(4)] + ':')
+                print ('_'*len(dic[int(q)][int(4)]))
                 print ('|   insert '+'It'+"'"+'s number.')
 
-                j = input ('       ?>> ')
-
+                j = input ('       ?^>> ')
+            
+                if j == 'exit' or j == 'back':
+                    t = []
+                    break
                 if j == str(dic[int(q)][0]):
                     print (ok)
                 else:
+                    print (ooh)
+                    n(2)
                     b = 1
-
-                print ('|   insert '+'It'+"'"+'s sambol.')
+            
+                print ('|   insert '+'It'+"'"+'s symbol.')
                 j = input ('       ?^>> ')
-
+            
+                if j == 'exit' or j == 'back':
+                    t = []
+                    break
+            
                 if j == dic[int(q)][1]:
                     print (ok)
                 else :
+                    print (ooh)
                     b = 1
             
-
                 if b == 1:
                     print_une(dic[int(q)][1])
+                    tt.append(q)
+                    if input('are you ok?') == 'no':
+                        n(3)
+                        sleep (1)
+                        n(3)
+                        print ("Not important")
+                    
+                        n(3)
+
+                        sleep (2)
+
                     
                 else :
-                    del t[q1]
                     print (ook)
-        
 
-
+            t = []
+            
+            for q2 in tt :
+                t.append(q2)
+            if t == []:
+                print(oook)
 
                 
               
@@ -251,11 +307,348 @@ def q_name(m):
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def q_number(m):
-   e = 0 
+    from time import sleep
+
+    
+
+    t = list()
+    
+    
+    print ('number exam:')
+    if m == 'f':
+        
+        qwer = list()
+        b_list(dici,qwer)
+        x = randlist(qwer)
+        
+
+        for q in x:
+
+            examer = q
+            aj = iton(examer)
+            jas = itos(examer)
+
+
+            b = 0
+            n(1)
+
+            print ('|   ' + examer + ':')
+            print ('_'*len(examer))
+            print ('|   insert ' + 'It'+"'"+'s name.')
+
+            j = input ('       ?^>> ')
+            
+            if j == 'exit' or j == 'back':
+                t = []
+                break
+            if j == aj:
+                print (ok)
+            else:
+                print (ooh)
+                n(2)
+                b = 1
+            
+            print ('|   insert '+'It'+"'"+'s sambol.')
+            j = input ('       ?^>> ')
+            
+            if j == 'exit' or j == 'back':
+                t = []
+                break
+            
+            if j == jas:
+                print (ok)
+            else :
+                print (ooh)
+                b = 1
+            
+            if b == 1:
+                print_une(jas)
+                t.append(q)
+                if input('are you ok?') == 'no':
+                    n(3)
+                    sleep (1)
+                    n(3)
+                    print ("Not important")
+                    
+                    n(3)
+
+                    sleep (2)
+
+                    
+            else :
+                print (ook)
+
+        if t == []:
+            print(oook)
+
+
+        tt = list()
+
+        while t != [] :
+
+
+
+
+
+            for q1 in range(0,len(t)):
+
+                examer = q
+                aj = iton(examer)
+                jas = itos(examer)
+
+
+
+
+                q = t[q1]
+                b = 0
+                n(1)
+
+                print ('|   ' + examer + ':')
+                print ('_'*len(examer))
+                print ('|   insert '+'It'+"'"+'s name.')
+
+                j = input ('       ?^>> ')
+            
+                if j == 'exit' or j == 'back':
+                    t = []
+                    break
+                if j == aj :
+                    print (ok)
+                else:
+                    print (ooh)
+                    n(2)
+                    b = 1
+            
+                print ('|   insert '+'It'+"'"+'s sambol.')
+                j = input ('       ?^>> ')
+            
+                if j == 'exit' or j == 'back':
+                    t = []
+                    break
+            
+                if j == jas :
+                    print (ok)
+                else :
+                    print (ooh)
+                    b = 1
+            
+                if b == 1:
+                    print_une(jas)
+                    tt.append(q)
+                    if input('are you ok?') == 'no':
+                        n(3)
+                        sleep (1)
+                        n(3)
+                        print ("Not important")
+                    
+                        n(3)
+
+                        sleep (2)
+
+                    
+                else :
+                    print (ook)
+
+            t = []
+            
+            for q2 in tt :
+                t.append(q2)
+            if t == []:
+                print(oook)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 def q_sambol(m):
-    e = 2
+    from time import sleep
+
+    
+
+    t = list()
+    
+    
+    print ('symbol exam:')
+    if m == 'f':
+        
+        
+        qwer = list()
+        b_list(dici,qwer)
+        x = randlist(qwer)
+        
+
+        for q in x:
+
+            examer = itos(q)
+            aj = ston(examer)
+            jas = str(stoi(examer))
+
+
+            b = 0
+            n(1)
+
+            print ('|   ' + examer + ':')
+            print ('_'*len(examer))
+            print ('|   insert ' + 'It'+"'"+'s name.')
+
+            j = input ('       ?^>> ')
+            
+            if j == 'exit' or j == 'back':
+                t = []
+                break
+            if j == aj:
+                print (ok)
+            else:
+                print (ooh)
+                n(2)
+                b = 1
+            
+            print ('|   insert '+'It'+"'"+'s number.')
+            j = input ('       ?^>> ')
+            
+            if j == 'exit' or j == 'back':
+                t = []
+                break
+            
+            if j == jas:
+                print (ok)
+            else :
+                print (ooh)
+                b = 1
+            
+            if b == 1:
+                print_une(itos(jas))
+                t.append(q)
+                if input('are you ok?') == 'no':
+                    n(3)
+                    sleep (1)
+                    n(3)
+                    print ("Not important")
+                    
+                    n(3)
+
+                    sleep (2)
+
+                    
+            else :
+                print (ook)
+
+        if t == []:
+            print(oook)
+
+
+        tt = list()
+
+        while t != [] :
+
+
+
+
+
+            for q1 in range(0,len(t)):
+
+                examer = itos(q)
+                aj = ston(examer)
+                jas = str(stoi(examer))
+
+
+
+
+                q = t[q1]
+                b = 0
+                n(1)
+
+                print ('|   ' + examer + ':')
+                print ('_'*len(examer))
+                print ('|   insert '+'It'+"'"+'s name.')
+
+                j = input ('       ?^>> ')
+            
+                if j == 'exit' or j == 'back':
+                    t = []
+                    break
+                if j == aj :
+                    print (ok)
+                else:
+                    print (ooh)
+                    n(2)
+                    b = 1
+            
+                print ('|   insert '+'It'+"'"+'s number.')
+                j = input ('       ?^>> ')
+            
+                if j == 'exit' or j == 'back':
+                    t = []
+                    break
+            
+                if j == jas :
+                    print (ok)
+                else :
+                    print (ooh)
+                    b = 1
+            
+                if b == 1:
+                    print_une(itos(jas))
+                    tt.append(q)
+                    if input('are you ok?') == 'no':
+                        n(3)
+                        sleep (1)
+                        n(3)
+                        print ("Not important")
+                    
+                        n(3)
+
+                        sleep (2)
+
+                    
+                else :
+                    print (ook)
+
+            t = []
+            
+            for q2 in tt :
+                t.append(q2)
+            if t == []:
+                print(oook)
+
+
+
+
+
+
+
+
+
 
 
 
@@ -268,14 +661,14 @@ def quese(ms):
                 q_name('f')
             elif m[1:] == 'nu':
                 q_number('f')
-            elif m[1:] == 'sa':
+            elif m[1:] == 'sy':
                 q_sambol('f')
         elif m[0] == 'm':
             if m[1:] == 'na':
                 q_name('m')
             elif m[1:] == 'nu':
                 q_number('m')
-            elif m[1:] == 'sa':
+            elif m[1:] == 'sy':
                 q_sambol('m')
         
 
@@ -508,6 +901,19 @@ ooh = '''
 
 
 
+oook = '''
+
+            __                      
+           |  |    | /    __        __    ---|--- 
+           |__|    |/    /  \       __\      |
+              |    |     \__/      /  |      |  
+            __|    |      \__      \__|      |
+                                  
+
+
+'''          
+
+
 
 
 
@@ -600,7 +1006,7 @@ while in2 != "exit" and in2 != "quit" :
 
         rrr = input ('mode:'+"  ^>> ").split()
         for rq in rrr :
-            if not (rq in ['fna','fnu','fsa','mna','mnu','msa']):
+            if not (rq in ['fna','fnu','fsy','mna','mnu','msy']):
                 err('quese.%s' %rrr)
                 sssq = 0
                 break
