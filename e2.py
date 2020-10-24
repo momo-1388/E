@@ -335,7 +335,7 @@ def q_number(m):
     
     print ('number exam:')
     if m == 'f':
-        
+        vv = 1
         qwer = list()
         b_list(dici,qwer)
         x = randlist(qwer)
@@ -344,7 +344,7 @@ def q_number(m):
         for q in x:
 
             examer = q
-            aj = iton(examer)
+            #aj = iton(examer)
             jas = itos(examer)
 
 
@@ -352,25 +352,26 @@ def q_number(m):
             n(1)
 
             print ('|   ' + examer + ':')
-            print ('_'*len(examer))
-            print ('|   insert ' + 'It'+"'"+'s name.')
+            print ('_'*len('|   insert ' + 'It'+"'"+'s name.'))
+            #print ('|   insert ' + 'It'+"'"+'s name.')
 
-            j = input ('       ?^>> ')
+            #j = input ('       ?^>> ')
             
-            if j == 'exit' or j == 'back':
-                t = []
-                break
-            if j == aj:
-                print (ok)
-            else:
-                print (ooh)
-                n(2)
-                b = 1
+            #if j == 'exit' or j == 'back':
+            #    t = []
+            #    break
+            #if j == aj:
+            #    print (ok)
+            #else:
+            #    print (ooh)
+            #    n(2)
+            #    b = 1
             
             print ('|   insert '+'It'+"'"+'s sambol.')
             j = input ('       ?^>> ')
             
             if j == 'exit' or j == 'back':
+                vv = 0
                 t = []
                 break
             
@@ -397,7 +398,7 @@ def q_number(m):
             else :
                 print (ook)
 
-        if t == []:
+        if t == [] and vv == 1 :
             print(oook)
 
 
@@ -407,7 +408,7 @@ def q_number(m):
 
 
 
-
+            
 
             for q1 in range(0,len(t)):
 
@@ -424,24 +425,26 @@ def q_number(m):
 
                 print ('|   ' + examer + ':')
                 print ('_'*len(examer))
-                print ('|   insert '+'It'+"'"+'s name.')
+                #print ('|   insert '+'It'+"'"+'s name.')
 
-                j = input ('       ?^>> ')
+                #j = input ('       ?^>> ')
             
-                if j == 'exit' or j == 'back':
-                    t = []
-                    break
-                if j == aj :
-                    print (ok)
-                else:
-                    print (ooh)
-                    n(2)
-                    b = 1
+                #if j == 'exit' or j == 'back':
+                #    vv = 0
+                #    t = []
+                #    break
+                #if j == aj :
+                #    print (ok)
+                #else:
+                #    print (ooh)
+                #    n(2)
+                #    b = 1
             
                 print ('|   insert '+'It'+"'"+'s sambol.')
                 j = input ('       ?^>> ')
             
                 if j == 'exit' or j == 'back':
+                    vv = 0
                     t = []
                     break
             
@@ -472,7 +475,9 @@ def q_number(m):
             
             for q2 in tt :
                 t.append(q2)
-            if t == []:
+
+        
+            if t == [] and vv == 1:
                 print(oook)
 
 
@@ -501,7 +506,8 @@ def q_sambol(m):
     print ('symbol exam:')
     if m == 'f':
         
-        
+        vv = 1
+
         qwer = list()
         b_list(dici,qwer)
         x = randlist(qwer)
@@ -510,7 +516,7 @@ def q_sambol(m):
         for q in x:
 
             examer = itos(q)
-            aj = ston(examer)
+            #aj = ston(examer)
             jas = str(stoi(examer))
 
 
@@ -519,25 +525,26 @@ def q_sambol(m):
 
             print ('|   ' + examer + ':')
             print ('_'*len(examer))
-            print ('|   insert ' + 'It'+"'"+'s name.')
+            #print ('|   insert ' + 'It'+"'"+'s name.')
 
-            j = input ('       ?^>> ')
+            #j = input ('       ?^>> ')
             
-            if j == 'exit' or j == 'back':
-                t = []
-                break
-            if j == aj:
-                print (ok)
-            else:
-                print (ooh)
-                n(2)
-                b = 1
+            #if j == 'exit' or j == 'back':
+            #    t = []
+            #    break
+            #if j == aj:
+            #    print (ok)
+            #else:
+            #    print (ooh)
+            #    n(2)
+            #    b = 1
             
             print ('|   insert '+'It'+"'"+'s number.')
             j = input ('       ?^>> ')
             
             if j == 'exit' or j == 'back':
                 t = []
+                vv = 0
                 break
             
             if j == jas:
@@ -563,7 +570,7 @@ def q_sambol(m):
             else :
                 print (ook)
 
-        if t == []:
+        if t == [] and vv == 1:
             print(oook)
 
 
@@ -578,7 +585,7 @@ def q_sambol(m):
             for q1 in range(0,len(t)):
 
                 examer = itos(q)
-                aj = ston(examer)
+                #aj = ston(examer)
                 jas = str(stoi(examer))
 
 
@@ -589,25 +596,26 @@ def q_sambol(m):
                 n(1)
 
                 print ('|   ' + examer + ':')
-                print ('_'*len(examer))
-                print ('|   insert '+'It'+"'"+'s name.')
+                print ('_'*len('|   insert '+'It'+"'"+'s number.'))
+                #print ('|   insert '+'It'+"'"+'s name.')
 
-                j = input ('       ?^>> ')
+                #j = input ('       ?^>> ')
             
-                if j == 'exit' or j == 'back':
-                    t = []
-                    break
-                if j == aj :
-                    print (ok)
-                else:
-                    print (ooh)
-                    n(2)
-                    b = 1
+               # if j == 'exit' or j == 'back':
+                #    t = []
+                #    break
+                #if j == aj :
+                #    print (ok)
+                #else:
+                #    print (ooh)
+                #    n(2)
+               #     b = 1
             
                 print ('|   insert '+'It'+"'"+'s number.')
                 j = input ('       ?^>> ')
             
                 if j == 'exit' or j == 'back':
+                    vv = 0
                     t = []
                     break
             
@@ -638,7 +646,8 @@ def q_sambol(m):
             
             for q2 in tt :
                 t.append(q2)
-            if t == []:
+
+            if vv == 1 and t == []:
                 print(oook)
 
 
