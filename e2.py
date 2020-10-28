@@ -739,18 +739,41 @@ def print_une (x):
         b = 4
         c = 0
         
-        
+
+
+
+
     lis[5] += '    ' + list_get(dic[dicq[x]],5,'') 
+    
     lis[a] += ("    tanavob = %i" % (dic[dicq[x]] [2] [0]))
+    
     lis[b] += ("    gorop = %i" % (dic[dicq[x]] [2] [1])) 
+    
     lis[a] += '    ' + (dic[dicq[x]][3]) 
+    
     lis[c] += (dic[dicq[x]][4]) + ':' 
+    
     lis[4].split()
+
+
+
+
+
+
     wwwe = len(lis[3])+1
     lis[1] += ('_'*(wwwe)) + '.'
+    
+
+   
     for q in range(2,len(lis)):
         lis[q] += (' '* (wwwe-len(lis[q]))) + '|'
+    
+
+
     lis.append(("_"*wwwe) + '|' )
+    
+
+
     print ('\n\n'+('\n'.join(lis)))
 
 
@@ -916,7 +939,7 @@ oook = '''
            |  |    | /    __        __    ---|--- 
            |__|    |/    /  \       __\      |
               |    |     \__/      /  |      |  
-            __|    |      \__      \__|      |
+            __/    |      \__      \__|      |
                                   
 
 
