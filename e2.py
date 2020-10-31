@@ -983,8 +983,8 @@ def quese(ms):
 
 Qd = {
          "s"  :{ 'en'  :'Symbol Exam'  , 'examer'   : lambda x : itos(x) ,  'j'    : [ [lambda x : x , 'Number' ] ] }    
-,        "n"  : {'en'  : 'Name Exam'   , 'examer'   : lambda x : iton(x) ,   'j'    : [ [lambda x : x , 'Number' ] , [lambda x : itos (x) , 'Symbol' ] ] }     
 ,        "u"   :{'en'   : 'Number Exam'  , 'examer' : lambda x : x       ,    'j'    : [[lambda x : itos(x) , 'Number']] } 
+,        "n"  : {'en'  : 'Name Exam'   , 'examer'   : lambda x : iton(x) ,   'j'    : [ [lambda x : x , 'Number' ] , [lambda x : itos (x) , 'Symbol' ] ] }   
 }
 
 
