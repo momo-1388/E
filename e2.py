@@ -18,6 +18,70 @@ Rr = lambda x : ','.join(x)
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def err (x):
+    print_all('')
+    print(' <%s>   ??????' % x)
+
+
+
+
+
+
+
+
+
+
+
+
+#                                      ##
+#                                      ##            _____
+#                  |                                /     \          _____|_____
+#                  |                   ||          |                      |
+#                  |                   ||           \_____                |
+#                  |                   ||                 \               |
+#                  |                   ||                  |              |
+#                  |                   ||           \_____/               |
+#                  |_______            ||                                 |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def blist (lis,x):
     if len(lis) > x :
         return True 
@@ -26,9 +90,129 @@ def blist (lis,x):
 
 
 
+
+
+
 def alist (lis,x,y):
     for q in range (0, x - len(lis) +1 ):
         lis.append (y)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def b_list(x,y):
+    for q in x:
+        y.append(q)
+
+
+
+
+
+
+
+
+
+
+
+
+def randlist(x):
+    from random import randint
+    y = x
+    z = list()
+    for q in range(0,len(x)):
+        im = randint (0,len(y)-1)
+        z.append (y[im])
+        del (y[im])
+    return z
+
+
+
+
+
+
+
+
+
+
+
+def list_get (lis,x,y):
+    if len(lis) > x :
+        return  lis[x]
+    else:
+        return  y
+
+
+
+
+
+
+
+
+
+def bin (x,y) :
+    for q in y :
+        if not (q in x) :
+            return False
+    return True
+
+
+
+
+def taf_lis (x,y) :
+    q = list()
+    b_list (x,q)
+    for q10 in y:
+        if q10 in q :
+            q.remove (q10)
+            
+    return q 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#                _______             ______ 
+#               |        \          |      \
+#               |         \         |       |
+#               |          |        |______/    
+#               |          |        |      \
+#               |         /         |       |
+#               |_______ /          |______/
+#
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -88,12 +272,26 @@ def dbc (name,code) :
 
     if not ( path.exists(  loc  ) ) :
         q2 = open (loc,'w+')
+        q2.write ('t,%s' % str  ( ','.join( dici ) ) )
         q2.close 
+        print ('plese restart program')
+        exit()
 
 
     if type(code) == str :
-        if code == 'open':    
-            return dbc_open(loc)
+
+
+        if code == 'open': 
+
+            dic = dict()
+            qx = dbc_open(loc)
+
+            for q in qx :
+                dic [ q[0] ] = q[1:]
+
+            return dic 
+
+
 
 
     elif type(code) == list :
@@ -104,22 +302,38 @@ def dbc (name,code) :
         if code == 'edit' :
                 
             fFile = dbc_open(loc)
+
+            lisa = dict()
+            dicta = list()
+            qlis = dict()
+
+
+            for q in range(0,len(fFile)) :
+                qa = fFile [q]
+                lisa[qa [0] ] = q
+
+
+
+            for q in range(0,len(liscode)) :
+                qa = liscode [q]
+                qlis[qa [0] ] = q
+
+
+
             for q in liscode:
-
-                if not ( blist(fFile , int(  q[0]  ) ) ):
-                    alist ( fFile , int(  q[0]  ) , str() )
-
-
-                fFile [ int(  q[0]  ) ] = q[1:]
-                dbc_write(loc,fFile)
+                dicta.append ( q[0] )
 
 
 
 
+            if  not  ( bin (  list( lisa.keys() )  , dicta ) ):
+                app = taf_lis ( dicta ,  list( lisa.keys() ) )
+                for aq in app :
+                    fFile.append (liscode[qlis[aq]])
 
 
-
-
+            qqqf = dict()    
+            qqqc = dict()
 
 
 
@@ -131,6 +345,29 @@ def dbc (name,code) :
 
 
 
+            for qqqq in liscode :
+                qqqc[qqqq[0]] = qqqq[1:]
+
+            for qqqq in fFile :
+                qqqf[qqqq[0]] = qqqq[1:]
+
+
+
+
+
+
+
+
+
+            for q in qqqc :
+                qqqf [ q ] = qqqc [ q ]
+
+            fFile = []
+
+            for q in qqqf:
+                fFile.append( [ [q]   + qqqf [ q ]  ]  [0] ) 
+
+            dbc_write(loc,fFile)
 
 
 
@@ -145,9 +382,6 @@ def dbc (name,code) :
 
 
 
-def b_list(x,y):
-    for q in x:
-        y.append(q)
 
 
 
@@ -160,15 +394,20 @@ def b_list(x,y):
 
 
 
-def randlist(x):
-    from random import randint
-    y = x
-    z = list()
-    for q in range(0,len(x)):
-        im = randint (0,len(y)-1)
-        z.append (y[im])
-        del (y[im])
-    return z
+
+
+
+
+#                _______
+#               /       \         
+#              |         |        |  /        ##                              
+#              |         |        | /                                    _____|_____
+#              |________/         |/          ||          | ______            |
+#              |                  |           ||          |/      \           |
+#              |                  |           ||          |        |          |
+#              |                  |           ||          |        |          |
+#              |                  |           ||          |        |          |      
+#
 
 
 
@@ -180,13 +419,90 @@ def randlist(x):
 
 
 
-def list_get (lis,x,y):
-    if len(lis) > x :
-        return  lis[x]
+
+
+
+
+
+def print_all (m):
+    w = list()
+    for t in ac :
+        for tt in range(1,19) :
+            #tt = list(t.keys()) [t1]
+            qqq = t.get(tt,'')
+            if qqq != '':
+                aaq = qqq[1]
+            else :
+                aaq = ''
+            if len(aaq) == 1:
+                aaq += ' '
+
+            w.append (aaq)
+        w.append('!?')
+    if m == 'r':
+        return print_j(w,m)
+    print_j(w,m)
+        
+
+
+
+
+
+
+
+
+        
+def print_une (x):
+    a = int()
+    b = int()
+    c = int()
+    lis = ['',''] + print_l ([x , dicq[x]])
+
+    if list_get(dic[dicq[x]],5,'') == '':
+        a = 3
+        b = 4
+        c = 0
     else:
-        return  y
+        a = 3
+        b = 4
+        c = 0
+        
 
 
+
+
+    lis[5] += '    ' + list_get(dic[dicq[x]],5,'') 
+    
+    lis[a] += ("    tanavob = %i" % (dic[dicq[x]] [2] [0]))
+    
+    lis[b] += ("    gorop = %i" % (dic[dicq[x]] [2] [1])) 
+    
+    lis[a] += '    ' + (dic[dicq[x]][3]) 
+    
+    lis[c] += (dic[dicq[x]][4]) + ':' 
+    
+    lis[4].split()
+
+
+
+
+
+
+    wwwe = len(lis[3])+1
+    lis[1] += ('_'*(wwwe)) + '.'
+    
+
+   
+    for q in range(2,len(lis)):
+        lis[q] += (' '* (wwwe-len(lis[q]))) + '|'
+    
+
+
+    lis.append(("_"*wwwe) + '|' )
+    
+
+
+    print ('\n\n'+('\n'.join(lis)))
 
 
 
@@ -300,483 +616,174 @@ def print_l (a):
 
 
 
-def q_name(m):
+
+
+
+
+
+
+
+
+
+
+
+
+
+#          _________            
+#         |
+#         |                            _____            ____   ____
+#         |_________         \  /       ____\         |/    \ /    \
+#         |                   \/       /    |         |      |      |
+#         |                   /\      |     |         |      |      |
+#         |_________         /  \      \____|         |      |      |
+#
+#
+
+
+
+
+
+
+
+
+
+def wr_db (x) :
+    base = dbc ('edata','open') ['t']
+    notb = taf_lis (base,x)
+    dbc ('edata' ,['edit', ['t'] + notb ])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def Exam(m):
+
+
+
     from time import sleep
 
+    
+
+    t = randlist ( dbc ('edata','open') ['t'] )
+    
+    iqd = Qd [m]
 
 
-    t = list()
+    
+    if t != []:
+        print ( "%s:"    % iqd['en'])
+    
+    vv = 1
+        
+    
+    ttt = []
 
-    print ('name exam:')
-    if m == 'f':
-        qwer = list()
-        b_list(dici,qwer)
-        x = randlist(qwer)
-        for q in x:
+
+
+
+
+    while t != [] :
+
+
+        tt = []
+
+
+        for q1 in range(0,len(t)):
+            
+            
+            q = t[q1]
             b = 0
-            n(1)
 
-            print ('|   ' + dic[int(q)][int(4)] + ':')
-            print ('_'*len(dic[int(q)][int(4)]))
-            print ('|   insert '+'It'+"'"+'s number.')
-
-            j = input ('       ?^>> ')
+            examer = iqd ['examer'] (q)
             
-            if j == 'exit' or j == 'back':
-                t = []
-                break
-            if j == str(dic[int(q)][0]):
-                print (ok)
-            else:
-                print (ooh)
-                n(2)
-                b = 1
-            
-            print ('|   insert '+'It'+"'"+'s symbol.')
-            j = input ('       ?^>> ')
-            
-            if j == 'exit' or j == 'back':
-                t = []
-                break
-            
-            if j == dic[int(q)][1]:
-                print (ok)
-            else :
-                print (ooh)
-                b = 1
-            
-            if b == 1:
-                print_une(dic[int(q)][1])
-                t.append(q)
-                if input('are you ok?') == 'no':
-                    n(3)
-                    sleep (1)
-                    n(3)
-                    print ("Not important")
-                    
-                    n(3)
-
-                    sleep (2)
-
-                    
-            else :
-                print (ook)
-
-        if t == []:
-            print(oook)
-
-
-        tt = list()
-
-        while t != [] :
-
-            for q1 in range(0,len(t)):
-                q = t[q1]
-                b = 0
-                n(1)
-
-                print ('|   ' + dic[int(q)][int(4)] + ':')
-                print ('_'*len(dic[int(q)][int(4)]))
-                print ('|   insert '+'It'+"'"+'s number.')
-
-                j = input ('       ?^>> ')
-            
-                if j == 'exit' or j == 'back':
-                    t = []
-                    break
-                if j == str(dic[int(q)][0]):
-                    print (ok)
-                else:
-                    print (ooh)
-                    n(2)
-                    b = 1
-            
-                print ('|   insert '+'It'+"'"+'s symbol.')
-                j = input ('       ?^>> ')
-            
-                if j == 'exit' or j == 'back':
-                    t = []
-                    break
-            
-                if j == dic[int(q)][1]:
-                    print (ok)
-                else :
-                    print (ooh)
-                    b = 1
-            
-                if b == 1:
-                    print_une(dic[int(q)][1])
-                    tt.append(q)
-                    if input('are you ok?') == 'no':
-                        n(3)
-                        sleep (1)
-                        n(3)
-                        print ("Not important")
-                    
-                        n(3)
-
-                        sleep (2)
-
-                    
-                else :
-                    print (ook)
-
-            t = []
-            
-            for q2 in tt :
-                t.append(q2)
-            if t == []:
-                print(oook)
-
-                
-              
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-def q_number(m):
-    from time import sleep
-
-    
-
-    t = list()
-    
-    
-    print ('number exam:')
-    if m == 'f':
-        vv = 1
-        qwer = list()
-        b_list(dici,qwer)
-        x = randlist(qwer)
-        
-
-        for q in x:
-
-            examer = q
-            #aj = iton(examer)
-            jas = itos(examer)
-
-
-            b = 0
-            n(1)
-
-            print ('|   ' + examer + ':')
-            print ('_'*len('|   insert ' + 'It'+"'"+'s name.'))
-            #print ('|   insert ' + 'It'+"'"+'s name.')
-
-            #j = input ('       ?^>> ')
-            
-            #if j == 'exit' or j == 'back':
-            #    t = []
-            #    break
-            #if j == aj:
-            #    print (ok)
-            #else:
-            #    print (ooh)
-            #    n(2)
-            #    b = 1
-            
-            print ('|   insert '+'It'+"'"+'s sambol.')
-            j = input ('       ?^>> ')
-            
-            if j == 'exit' or j == 'back':
-                vv = 0
-                t = []
-                break
-            
-            if j == jas:
-                print (ok)
-            else :
-                print (ooh)
-                b = 1
-            
-            if b == 1:
-                print_une(jas)
-                t.append(q)
-                if input('are you ok?') == 'no':
-                    n(3)
-                    sleep (1)
-                    n(3)
-                    print ("Not important")
-                    
-                    n(3)
-
-                    sleep (2)
-
-                    
-            else :
-                print (ook)
-
-        if t == [] and vv == 1 :
-            print(oook)
-
-
-        tt = list()
-
-        while t != [] :
-
-
-
-            
-
-            for q1 in range(0,len(t)):
-
-                examer = q
-                aj = iton(examer)
-                jas = itos(examer)
-
-
-
-
-                q = t[q1]
-                b = 0
-                n(1)
-
-                print ('|   ' + examer + ':')
-                print ('_'*len(examer))
-                #print ('|   insert '+'It'+"'"+'s name.')
-
-                #j = input ('       ?^>> ')
-            
-                #if j == 'exit' or j == 'back':
-                #    vv = 0
-                #    t = []
-                #    break
-                #if j == aj :
-                #    print (ok)
-                #else:
-                #    print (ooh)
-                #    n(2)
-                #    b = 1
-            
-                print ('|   insert '+'It'+"'"+'s sambol.')
-                j = input ('       ?^>> ')
-            
-                if j == 'exit' or j == 'back':
-                    vv = 0
-                    t = []
-                    break
-            
-                if j == jas :
-                    print (ok)
-                else :
-                    print (ooh)
-                    b = 1
-            
-                if b == 1:
-                    print_une(jas)
-                    tt.append(q)
-                    if input('are you ok?') == 'no':
-                        n(3)
-                        sleep (1)
-                        n(3)
-                        print ("Not important")
-                    
-                        n(3)
-
-                        sleep (2)
-
-                    
-                else :
-                    print (ook)
-
-            t = []
-            
-            for q2 in tt :
-                t.append(q2)
-
-        
-            if t == [] and vv == 1:
-                print(oook)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-def q_sambol(m):
-    from time import sleep
-
-    
-
-    t = list()
-    
-    
-    print ('symbol exam:')
-    if m == 'f':
-        
-        vv = 1
-
-        qwer = list()
-        b_list(dici,qwer)
-        x = randlist(qwer)
-        
-
-        for q in x:
-
-            examer = itos(q)
             #aj = ston(examer)
-            jas = str(stoi(examer))
+            
+            #jas = str(stoi(examer))
 
 
-            b = 0
+
+
+          
             n(1)
 
             print ('|   ' + examer + ':')
-            print ('_'*len(examer))
-            #print ('|   insert ' + 'It'+"'"+'s name.')
-
-            #j = input ('       ?^>> ')
-            
-            #if j == 'exit' or j == 'back':
-            #    t = []
-            #    break
-            #if j == aj:
-            #    print (ok)
-            #else:
-            #    print (ooh)
-            #    n(2)
-            #    b = 1
-
-            
-            print ('|   insert '+'It'+"'"+'s number.')
-            j = input ('       ?^>> ')
-            
-            if j == 'exit' or j == 'back':
-                t = []
-                vv = 0
-                break
-            
-            if j == jas:
-                print (ok)
-            else :
-                print (ooh)
-                b = 1
-            
-            if b == 1:
-                print_une(itos(jas))
-                t.append(q)
-                if input('are you ok?') == 'no':
-                    n(3)
-                    sleep (1)
-                    n(3)
-                    print ("Not important")
-                    
-                    n(3)
-
-                    sleep (2)
-
-                    
-            else :
-                print (ook)
-
-        if t == [] and vv == 1:
-            print(oook)
+            print ('_'*len('|   ' + examer + ':'))
+ 
 
 
-        tt = list()
+            for q3 in iqd ['j']:
 
-        while t != [] :
-
-
-
-
-
-            for q1 in range(0,len(t)):
-
-                examer = itos(q)
-                #aj = ston(examer)
-                jas = str(stoi(examer))
-
-
-
-
-                q = t[q1]
-                b = 0
-                n(1)
-
-                print ('|   ' + examer + ':')
-                print ('_'*len('|   insert '+'It'+"'"+'s number.'))
-                #print ('|   insert '+'It'+"'"+'s name.')
-
-                #j = input ('       ?^>> ')
-            
-               # if j == 'exit' or j == 'back':
-                #    t = []
-                #    break
-                #if j == aj :
-                #    print (ok)
-                #else:
-                #    print (ooh)
-                #    n(2)
-               #     b = 1
-            
-                print ('|   insert '+'It'+"'"+'s number.')
+                print ('|   insert '+'It'+"'"+'s %s.' % ( q3 [1] ) )
                 j = input ('       ?^>> ')
             
                 if j == 'exit' or j == 'back':
+                    b = 0
                     vv = 0
                     t = []
+                    wr_db (ttt)
+
                     break
             
-                if j == jas :
+                if j == q3 [0] (q) :
                     print (ok)
                 else :
                     print (ooh)
                     b = 1
             
-                if b == 1:
-                    print_une(itos(jas))
-                    tt.append(q)
-                    if input('are you ok?') == 'no':
-                        n(3)
-                        sleep (1)
-                        n(3)
-                        print ("Not important")
+            if b == 1:
+                print_une( itos (q) )
+                tt.append(q)
+                if input('are you ok?') == 'no':
+                    n(3)
+                    sleep (1)
+                    n(3)
+                    print ("Not important !")
                     
-                        n(3)
+                    n(1)
 
-                        sleep (2)
+                    sleep (2.5)
+
+                    n(2)
+
 
                     
-                else :
-                    print (ook)
+            elif vv == 1 :
+                ttt.append (q)
+                print (ook)
 
-            t = []
+
+            if vv == 0 :
+                break
+
+
+        t = []
             
-            for q2 in tt :
-                t.append(q2)
 
-            if vv == 1 and t == []:
-                print(oook)
+        b_list (tt,t)
+
+
+        if vv == 1 and t == []:
+            wr_db (ttt)
+            print(oook)
+        
+        if vv == 0 :
+            break 
+
+
+
+    
+
 
 
 
@@ -795,18 +802,18 @@ def quese(ms):
     for m in ms:
         if m[0] == 'f':
             if m[1:] == 'na':
-                q_name('f')
+                Exam('n')
             elif m[1:] == 'nu':
-                q_number('f')
+                Exam('u')
             elif m[1:] == 'sy':
-                q_sambol('f')
-        elif m[0] == 'm':
-            if m[1:] == 'na':
-                q_name('m')
-            elif m[1:] == 'nu':
-                q_number('m')
-            elif m[1:] == 'sy':
-                q_sambol('m')
+                Exam('s')
+#        elif m[0] == 'm':
+#            if m[1:] == 'na':
+#                q_name('m')
+#            elif m[1:] == 'nu':
+#                q_number('m')
+#            elif m[1:] == 'sy':
+#                q_sambol('m')
         
 
 
@@ -824,25 +831,7 @@ def quese(ms):
 
 
 
-def print_all (m):
-    w = list()
-    for t in ac :
-        for tt in range(1,19) :
-            #tt = list(t.keys()) [t1]
-            qqq = t.get(tt,'')
-            if qqq != '':
-                aaq = qqq[1]
-            else :
-                aaq = ''
-            if len(aaq) == 1:
-                aaq += ' '
 
-            w.append (aaq)
-        w.append('!?')
-    if m == 'r':
-        return print_j(w,m)
-    print_j(w,m)
-        
 
 
 
@@ -851,64 +840,25 @@ def print_all (m):
 
 
 
-        
-def print_une (x):
-    a = int()
-    b = int()
-    c = int()
-    lis = ['',''] + print_l ([x , dicq[x]])
 
-    if list_get(dic[dicq[x]],5,'') == '':
-        a = 3
-        b = 4
-        c = 0
-    else:
-        a = 3
-        b = 4
-        c = 0
-        
 
 
 
 
-    lis[5] += '    ' + list_get(dic[dicq[x]],5,'') 
-    
-    lis[a] += ("    tanavob = %i" % (dic[dicq[x]] [2] [0]))
-    
-    lis[b] += ("    gorop = %i" % (dic[dicq[x]] [2] [1])) 
-    
-    lis[a] += '    ' + (dic[dicq[x]][3]) 
-    
-    lis[c] += (dic[dicq[x]][4]) + ':' 
-    
-    lis[4].split()
 
 
 
 
 
 
-    wwwe = len(lis[3])+1
-    lis[1] += ('_'*(wwwe)) + '.'
-    
 
-   
-    for q in range(2,len(lis)):
-        lis[q] += (' '* (wwwe-len(lis[q]))) + '|'
-    
 
 
-    lis.append(("_"*wwwe) + '|' )
-    
 
 
-    print ('\n\n'+('\n'.join(lis)))
 
 
 
-def err (x):
-    print_all('')
-    print(' <%s>   ??????' % x)
 
 
 
@@ -959,6 +909,83 @@ def err (x):
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Qd = {
+         "s"  :{ 'en'  :'Symbol Exam'  , 'examer'   : lambda x : itos(x) ,  'j'    : [ [lambda x : x , 'Number' ] ] }    
+,        "n"  : {'en'  : 'Name Exam'   , 'examer'   : lambda x : iton(x) ,   'j'    : [ [lambda x : x , 'Number' ] , [lambda x : itos (x) , 'Symbol' ] ] }     
+,        "u"   :{'en'   : 'Number Exam'  , 'examer' : lambda x : x       ,    'j'    : [[lambda x : itos(x) , 'Number']] } 
+}
 
 
 
@@ -1078,10 +1105,10 @@ ooh = '''
 oook = '''
 
             __                      
-           |  |    | /    __        __    ---|--- 
-           |__|    |/    /  \       __\      |
-              |    |     \__/      /  |      |  
-            __/    |      \__      \__|      |
+           |  |    | /    __      __    ---|--- 
+           |__|    |/    /  \     __\      |
+              |    |     \__/    /  |      |  
+            __/    |      \__    \__|      |
                                   
 
 
@@ -1100,10 +1127,10 @@ bye = '''
 
 
 ##            _______                                 ________           
-##           |       \           \      /            |                   
-##           |        \           \    /             |                   
-##           |        /            \  /              |                   
-##           |_______/              \/               |________           
+##           |       \           \     /             |                   
+##           |        \           \   /              |                   
+##           |        /            \ /               |                   
+##           |_______/              V                |________           
 ##           |       \              |                |                   
 ##           |        \             |                |                   
 ##           |        /             |                |                   
