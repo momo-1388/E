@@ -275,6 +275,7 @@ def dbc (name,code) :
         q2.write ('t,%s' % str  ( ','.join( dici ) ) )
         q2.close 
         print ('plese restart program')
+        input('Insert Enter  ...\n\n')
         exit()
 
 
@@ -444,13 +445,22 @@ def print_m (x,y):
 
 
 def print_all (m):
+    mo1 = 1
+    mm = []
+    if type(m) == list:
+        mm = m[1]+m[0]
+    if m == 'a' or type(m) == list :
+        mo1 = 0
     w = list()
     for t in ac :
         for tt in range(1,19) :
             #tt = list(t.keys()) [t1]
             qqq = t.get(tt,'')
             if qqq != '':
-                aaq = qqq[1]
+                if type(m) == list and qqq[0] in mm:
+                    aaq =  str ( qqq[ 1 ] )
+                else:
+                    aaq = str ( qqq[ mo1 ] )
             else :
                 aaq = ''
             if len(aaq) == 1:
@@ -510,11 +520,19 @@ def print_une (x):
     wwwe = len(lis[3])+1
     lis[1] += ('_'*(wwwe)) + '.'
     
-
+    #lis [3] += ' '*4
+    
    
     for q in range(2,len(lis)):
-        lis[q] += (' '* (wwwe-len(lis[q]))) + '|'
+        lis[q] += (' '* (wwwe-len(lis[q]))) 
     
+
+    lis [4] += ' '*9
+    lis [3] += ' '*9
+
+
+    for q in range(2,len(lis)):
+        lis[q] += '|'
 
 
     lis.append(("_"*wwwe) + '|' )
@@ -535,6 +553,10 @@ def print_une (x):
 
 
 def print_j(x,m):
+
+
+
+    from termcolor import colored
     wer = 0
     n = 0
     vaz = 1
@@ -560,7 +582,14 @@ def print_j(x,m):
                 if vaz == 0:
                     dic[n] += '|'
                     dic[n+1] += '|'
-                dic[n] += (q+'|')
+
+                if q.strip() in list_get(m,1,[]) :
+                    dic[n] += (colored (q  ,'blue' )+'|')           
+                elif q.strip() in dici :
+                    dic[n] += (colored (q  ,'red' )+'|')
+                else:  
+                    dic[n] += (colored (q  ,'green' )+'|')
+                
                 dic[n+1] += (('-'*2)+'|')
                 vaz = 1
         else:
@@ -573,9 +602,8 @@ def print_j(x,m):
             qwe += 2
     for q in range(1,int((len(dic)-1)/2)):
         r = (q*2) + 1
-        #dic[r] += '-'
-        if len (dic.get(r-1,100000)) < len (dic.get(r+1,0)):
-            dic[r] = dic.get(r) + ('_' * int(len (dic.get(r+1,0)) - len (dic.get(r-1,100000)))) 
+        #dic[r] += '-'q
+        # * int(len (dic.get(r+1,0)) - len (dic.get(r-1,100000)))) 
     dic[1] += '+'
     for q1 in range(0,qwe):
         q = list(dic.keys()) [q1]
@@ -584,7 +612,7 @@ def print_j(x,m):
     dicl[len(dicl)-2] = dicl[len(dicl)-2] [:len(dicl[len(dicl)-2])] + '|'
     if m == 'r':
         return ('\n'.join(dicl))
-    print_m ('\n'.join(dicl),0.04)
+    print_m ('\n'.join(dicl),0.015)
 
 
 
@@ -600,6 +628,14 @@ def print_j(x,m):
 
 
 def print_l (a):
+    
+    from termcolor import colored
+
+    color1 = 'blue'
+    color2 = 'blue'
+
+
+
     lis = list()
     x = list()
     for q in a:
@@ -613,14 +649,24 @@ def print_l (a):
         if( m - len(t)) > 0 :
             if ( m - len(t))%2 == 0:
                 zzz = str(' '*int( (m - len(t))/2))
-                
-                lis.append('|' + zzz + str(t) + zzz + '|')
+                zzx = str(' '*int( (m - len(t))/2))
+                #lis.append('|' + zzz + str(t) + zzz + '|')
             else :
-                
                 zzz = str(' '*int( (m - len(t))/2))
-                lis.append('| ' + zzz + t + zzz + '|') 
+                zzx = str(' '  + str(' '*int( (m - len(t))/2)))
+
+            
+
+            if t in dici :
+                lis.append('|' + zzx + colored(t,color1) + zzz + '|')
+            else:
+                lis.append('|' + zzx + colored(t,color2) + zzz + '|') 
+
         else:
-            lis.append('|'+t+'|')
+            if t in dici :
+                lis.append('|'+colored(t,color1)+'|')
+            else:
+                lis.append('|'+colored(t,color2)+'|')
     lis.append('#'*(m+2))
     return(lis)
 
@@ -689,7 +735,7 @@ def wr_db (x) :
 def Exam(m):
 
 
-
+    from termcolor import colored
     from time import sleep
 
     
@@ -701,7 +747,7 @@ def Exam(m):
 
     
     if t != []:
-        print ( "%s:"    % iqd['en'])
+        print ( colored (  "%s:"    % iqd['en']     ,'red')  )
     
     vv = 1
         
@@ -736,7 +782,7 @@ def Exam(m):
           
             n(1)
 
-            print ('|   ' + examer + ':')
+            print ('|    %s:'    % colored (examer , 'blue') )
             sleep (0.05)
             print ('_'*len('|   ' + examer + ':'))
  
@@ -744,9 +790,9 @@ def Exam(m):
 
             for q3 in iqd ['j']:
 
-                print ('|   insert '+'It'+"'"+'s %s.' % ( q3 [1] ) )
+                print ('|   insert '+'It'+"'"+'s %s.' % colored( q3 [1] , 'green') )
                 sleep(0.06)
-                j = input ('       ?^>> ')
+                j = input ('       ?^' +  colored('>> ' , 'blue')   )
             
                 if j == 'exit' or j == 'back':
                     b = 0
@@ -756,6 +802,24 @@ def Exam(m):
 
                     break
             
+                if j == 'a' and q3 [1] == 'Number' :
+                    print_all('a')
+                    n(3)
+                    j = input('       ^??' + colored ('>>' , 'red'))
+                    if j == 'coex':
+                        quese (['co'])
+                        n(2)
+                        print ('|    %s:'    % colored (examer , 'blue') )
+                        sleep (0.01)
+                        print ('_'*len('|   ' + examer + ':'))
+                        sleep (0.01)
+                        print ('|   insert '+'It'+"'"+'s %s.' % colored( q3 [1] , 'green') )
+                        sleep (0.01)
+                        j = input('       ^??' + colored ('>>' , 'red'))
+                        
+
+
+
                 if j == q3 [0] (q) :
                     print_m (ok,0.04)
                 else :
@@ -800,10 +864,231 @@ def Exam(m):
         
         if vv == 0 :
             break 
+    
+
+    
+    if vv == 1 and t == []:
+        wr_db (ttt)
+        print_m(gre,0.04)
 
 
 
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def co_exam (m) :
+    
+
+    from termcolor import colored
+    from time import sleep
+
+    
+
+    t = dici
+    
+    iqd = Qd [m]
+
+
+    
+    if t != []:
+        print ( "%s:"    % iqd['en'])
+    
+    vv = 1
+        
+    
+    ttt = []
+
+
+    tt = []
+
+
+    while t != [] :
+
+
+    
+
+
+            
+            
+        
+        b = 0
+
+
+        print_all([tt,ttt])
+
+        
+        n(2)
+
+        print ("%s it! " %iqd['j'] [0] [1])
+
+        n(1)
+
+        j = input ('       ?^' + colored ('>> '  , 'green') ).split()
+
+            
+        #jas = str(stoi(examer))
+
+        
+
+
+          
+        #n(1)
+
+        #print ('|   ' + examer + ':')
+        #sleep (0.05)
+        #print ('_'*len('|   ' + examer + ':'))
+ 
+
+
+        #for q3 in iqd ['j']:
+
+        #print ('|   insert '+'It'+"'"+'s %s.' % ( q3 [1] ) )
+        #sleep(0.06)
+        #j = input ('       ?^>> ')
+        
+        if j[0] == 'exit' or j[0] == 'back':
+            b = 0
+            vv = 0
+            t = []
+            tt = []
+            ttt = []
+        #    wr_db (ttt)
+
+            break
+        
+
+        if len (j) == 1:
+            if j[0] in dici :
+                print_une (  itos ( j[0] )  )
+                n(2)
+                input()
+                j.append ( itos ( j[0] ) )
+                ttt.append( j [1] )
+            else:
+                j.append (' ')
+
+
+
+
+
+        examer = iqd ['examer'] (j[0])
+
+        if list_get( j,1,'' ) == 'j':
+            aj = itos (j[0])
+        else :
+            aj = iqd ['j'] [0] [0] (examer)
+
+
+
+
+
+
+
+        #if examer == aj :
+        #    print_all('a')
+        #    n(3)
+        #    j = input('       ^??>>')
+
+
+
+        if aj == list_get(j,1,'') :
+            print_m (ok,0.015)
+            tt.append (int(j[0]))
+            t.remove (j[0])
+        else :
+            print_m (ooh,0.015)
+            b = 1
+        
+        #if b == 1:
+        #    print_une( itos (q) )
+        #    if input('are you ok?') == 'no':
+        #        n(3)
+        #        sleep (1)
+        #        n(3)
+        #        print ("Not important !")
+                
+        #        n(1)
+        #        sleep (2.5)exit
+
+        #        n(2)
+                
+        #elif vv == 1 :
+            ttt.append (q)
+            print_m (ook,0.015)
+        if vv == 0 :
+            break
+
+        #t = []
+            
+
+        #b_list (tt,t)
+
+
+        #if vv == 1 and t == []:
+        #    wr_db (ttt)
+        #    print_m(oook,0.04)
+        
+        if vv == 0 :
+            break 
+    
+
+    
+    #if vv == 1 and t == []:
+    #    wr_db (ttt)
+    #    print_m(gre,0.04)
+
+
+ 
 
 
 
@@ -828,6 +1113,8 @@ def quese(ms):
                 Exam('u')
             elif m[1:] == 'sy':
                 Exam('s')
+        elif m == 'co':
+            co_exam('c')
 #        elif m[0] == 'm':
 #            if m[1:] == 'na':
 #                q_name('m')
@@ -1003,9 +1290,10 @@ def quese(ms):
 
 
 Qd = {
-         "s"  :{ 'en'  :'Symbol Exam'  , 'examer'   : lambda x : itos(x) ,  'j'    : [ [lambda x : x , 'Number' ] ] }    
-,        "u"   :{'en'   : 'Number Exam'  , 'examer' : lambda x : x       ,    'j'    : [[lambda x : itos(x) , 'Number']] } 
-,        "n"  : {'en'  : 'Name Exam'   , 'examer'   : lambda x : iton(x) ,   'j'    : [ [lambda x : x , 'Number' ] , [lambda x : itos (x) , 'Symbol' ] ] }   
+         "s"  :{ 'en'  :'Symbol Exam'        ,   'examer'   : lambda x : itos(x) ,  'j'    : [ [lambda x : x , 'Number' ] ] }    
+,        "u"  :{ 'en'  : 'Number Exam'       ,   'examer'   : lambda x : x       ,  'j'    : [ [lambda x : itos(x) , 'Number'] ] } 
+,        "n"  :{ 'en'  : 'Name Exam'         ,   'examer'   : lambda x : iton(x) ,  'j'    : [ [lambda x : x , 'Number' ] , [lambda x : itos (x) , 'Symbol' ] ] }   
+,        "c"  :{ 'en'  : 'Complator Exam'    ,   'examer'   : lambda x : x       ,  'j'    : [ [lambda x : itos(x) , 'Compelate'] ]}
 }
 
 
@@ -1284,18 +1572,18 @@ ac = [{1:H,18:He},{1:Li,2:Be,13:B,14:C,15:N,16:O,17:F,18:Ne},{1:Na,2:Mg,13:Al,14
 
 
 
+from termcolor import colored
+from time import  sleep 
 
 
 
-
-
-code = "\n\n\n   &>  "
+code = colored("\n\n\n   &>"    , 'red')   + '>>'
 print_all('')
 in2 = input(code)
 while in2 != "exit" and in2 != "quit" :
     if in2 != '' and  in2[0] == 'p':
         if len (in2) == 1:
-            q2 = input('mode:'+"  ^>> ")
+            q2 = input('   mode:'+" fijlirg       %s> "   % colored ('^>' , 'blue')  )
         else:
             q2 = in2[2:]
         if q2 == 'tan':
@@ -1311,7 +1599,7 @@ while in2 != "exit" and in2 != "quit" :
 
         rrr = input ('mode:'+"  ^>> ").split()
         for rq in rrr :
-            if not (rq in ['fna','fnu','fsy','mna','mnu','msy']):
+            if not (rq in ['fna','fnu','fsy','mna','mnu','msy','co']):
                 err('quese.%s' %rrr)
                 sssq = 0
                 break
@@ -1337,7 +1625,7 @@ print(bye)
 
 
 
-
+sleep (3)
 
 
 
