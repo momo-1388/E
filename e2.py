@@ -1597,7 +1597,7 @@ while in2 != "exit" and in2 != "quit" :
     elif  in2 == 'q' or in2 == 'quese' :
         sssq = 1
 
-        rrr = input ('mode:'+"  ^>> ").split()
+        rrr = input ('mode:'+colored("  ^>",'blue') + '> ').split()
         for rq in rrr :
             if not (rq in ['fna','fnu','fsy','mna','mnu','msy','co']):
                 err('quese.%s' %rrr)
