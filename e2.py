@@ -1568,7 +1568,7 @@ ac = [{1:H,18:He},{1:Li,2:Be,13:B,14:C,15:N,16:O,17:F,18:Ne},{1:Na,2:Mg,13:Al,14
 
 
 
-
+n(30)
 
 
 
@@ -1597,7 +1597,7 @@ while in2 != "exit" and in2 != "quit" :
     elif  in2 == 'q' or in2 == 'quese' :
         sssq = 1
 
-        rrr = input ('mode:'+colored("  ^>",'blue') + '> ').split()
+        rrr = input (' mode:'+colored("     ^>",'blue') + '> ').split()
         for rq in rrr :
             if not (rq in ['fna','fnu','fsy','mna','mnu','msy','co']):
                 err('quese.%s' %rrr)
@@ -1617,7 +1617,7 @@ while in2 != "exit" and in2 != "quit" :
         err(in2)        
 
     in2 = input(code)
-    code = "\n\n\n   &>  "
+    code = colored("\n\n\n   &>"    , 'red')   + '>>'
     
 
 
