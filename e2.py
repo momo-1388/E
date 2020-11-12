@@ -1611,7 +1611,7 @@ in2 = input(code)
 while in2 != "exit" and in2 != "quit" :
     if in2 != '' and  in2[0] == 'p':
         if len (in2) == 1:
-            q2 = input('mode:'+"       %s> "   % colored ('^>' , 'blue')  )
+            q2 = input('mode:'+"      %s> "   % colored ('^>' , 'blue')  )
         else:
             q2 = in2[2:]
         if q2 == 'tan':
