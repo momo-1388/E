@@ -755,8 +755,8 @@ def Exam(m):
     ttt = []
 
 
-
-
+    oo = []
+    ooo = []
 
     while t != [] :
 
@@ -803,11 +803,19 @@ def Exam(m):
                     break
             
                 if j == 'a' and q3 [1] == 'Number' :
-                    print_all('a')
+        
+                    print_all([oo,ooo])
                     n(3)
                     j = input('       ^??' + colored ('>>' , 'red'))
+        
+        
                     if j == 'coex':
-                        quese (['co'])
+                        
+                        
+                        qer = co_exam('c',[oo,ooo])
+                        oo += qer [0]
+                        ooo += qer [1]
+                        
                         n(2)
                         print ('|    %s:'    % colored (examer , 'blue') )
                         sleep (0.01)
@@ -844,6 +852,7 @@ def Exam(m):
 
                     
             elif vv == 1 :
+                oo.append (int(q))
                 ttt.append (q)
                 print_m (ook,0.04)
 
@@ -898,35 +907,7 @@ def Exam(m):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-def co_exam (m) :
+def co_exam (m,ss) :
     
 
     from termcolor import colored
@@ -946,10 +927,10 @@ def co_exam (m) :
     vv = 1
         
     
-    ttt = []
+    ttt = ss[1]
 
 
-    tt = []
+    tt = ss[0]
 
 
     while t != [] :
@@ -1004,7 +985,7 @@ def co_exam (m) :
             ttt = []
         #    wr_db (ttt)
 
-            break
+            return [tt,ttt]
         
 
         if len (j) == 1:
@@ -1081,7 +1062,9 @@ def co_exam (m) :
         if vv == 0 :
             break 
     
+        
 
+    return [tt,ttt]
     
     #if vv == 1 and t == []:
     #    wr_db (ttt)
@@ -1114,7 +1097,7 @@ def quese(ms):
             elif m[1:] == 'sy':
                 Exam('s')
         elif m == 'co':
-            co_exam('c')
+            return co_exam('c',[[],[]])
 #        elif m[0] == 'm':
 #            if m[1:] == 'na':
 #                q_name('m')
@@ -1123,6 +1106,51 @@ def quese(ms):
 #            elif m[1:] == 'sy':
 #                q_sambol('m')
         
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1577,13 +1605,13 @@ from time import  sleep
 
 
 
-code = colored("\n\n\n   &>"    , 'red')   + '>>'
+code = colored("\n\n\n   &>"    , 'red')   + '>> '
 print_all('')
 in2 = input(code)
 while in2 != "exit" and in2 != "quit" :
     if in2 != '' and  in2[0] == 'p':
         if len (in2) == 1:
-            q2 = input('   mode:'+" fijlirg       %s> "   % colored ('^>' , 'blue')  )
+            q2 = input('mode:'+"       %s> "   % colored ('^>' , 'blue')  )
         else:
             q2 = in2[2:]
         if q2 == 'tan':
@@ -1597,7 +1625,7 @@ while in2 != "exit" and in2 != "quit" :
     elif  in2 == 'q' or in2 == 'quese' :
         sssq = 1
 
-        rrr = input (' mode:'+colored("     ^>",'blue') + '> ').split()
+        rrr = input ('mode:'+colored("    ^>",'blue') + '> ').split()
         for rq in rrr :
             if not (rq in ['fna','fnu','fsy','mna','mnu','msy','co']):
                 err('quese.%s' %rrr)
@@ -1617,7 +1645,7 @@ while in2 != "exit" and in2 != "quit" :
         err(in2)        
 
     in2 = input(code)
-    code = colored("\n\n\n   &>"    , 'red')   + '>>'
+    code = colored("\n\n\n   &>"    , 'red')   + '>> '
     
 
 
