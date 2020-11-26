@@ -948,6 +948,8 @@ def co_exam (m,ss) :
         print_all([tt,ttt])
 
         
+        
+
         n(2)
 
         print ("%s it! " %iqd['j'] [0] [1])
